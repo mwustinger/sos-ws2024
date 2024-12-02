@@ -1,0 +1,4 @@
+Particle Inertia,Personal Confidence,Swarm Confidence,Population Size,Particle Speed Limit,Constraint Handling Method,Final Fitness,Optimum Found After,Iterations
+0.3,0.8,1.6,13,13,Rejection Method,0.9792624968257219,22,50
+0.3,0.8,1.6,13,13,Rejection Method,1.0,9,9
+0.3,0.8,1.6,13,13,Rejection Method,1.0,9,9
