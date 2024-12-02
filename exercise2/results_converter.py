@@ -2,7 +2,7 @@ import re
 import csv
 
 # Read the log data from the file "results.txt"
-with open('results.txt', 'r') as file:
+with open('Booth.txt', 'r') as file:
     log_data = file.read()
 
 # Define the regex pattern to extract the relevant data
@@ -13,7 +13,7 @@ matches = pattern.findall(log_data)
 
 # Prepare the header for the CSV file
 csv_header = [
-    'Particle Inertia', 'Personal Confidence', 'Swarm Confidence', 
+    'Fitness Function', 'Particle Inertia', 'Personal Confidence', 'Swarm Confidence', 
     'Population Size', 'Particle Speed Limit', 'Constraint Handling Method', 
     'Final Fitness', 'Optimum Found After', 'Iterations'
 ]
@@ -28,6 +28,7 @@ with open('simulation_results.csv', 'w', newline='') as csvfile:
     # Write the filtered data for each match
     for match in matches:
         row = [
+            'Booth',
             float(match[0]),  # Particle Inertia
             float(match[1]),  # Personal Confidence
             float(match[2]),  # Swarm Confidence
