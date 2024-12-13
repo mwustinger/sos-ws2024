@@ -46,13 +46,28 @@ globals
   max-y;           ; maximum y coordinate
 
   iterations       ; counter for iterations
+  experiments       ; counter for experiments
+  state            ; counter for state
 ]
 
 ; The function setup initilizes the search landscape and the agents
 ; for the search. It is called by the button controll setup
 
+to setup-experiments
+  set fitness_function "Langermann"
+  set constraint "Constraint 1"
+  set constraints false
+  set experiments 1;
+  set state 1;
+  setup
+end
+
 to setup
+  let temp experiments
+  let temp2 state
   clear-all
+  set experiments temp
+  set state temp2
   set iterations 1;
   initialize-topology
 
@@ -208,7 +223,104 @@ to iterate
   if (global-best-val = [val] of true-best-patch) or (iterations > 49) [
     ; Export hyperparameters and final fitness value to a file before stopping
     export-run-results
-    stop
+    set experiments (experiments + 1)
+    if (experiments > 30) [
+      if (state = 1) [
+        set fitness_function "Langermann"
+        set constraint "Constraint 3"
+        set constraints true
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 2) [
+        set fitness_function "Langermann"
+        set constraint "Constraint 3"
+        set constraints true
+        set constraint_handling_method "Penalty Method"
+      ]
+      if (state = 3) [
+        set fitness_function "Langermann"
+        set constraint "Constraint 4"
+        set constraints true
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 4) [
+        set fitness_function "Langermann"
+        set constraint "Constraint 4"
+        set constraints true
+        set constraint_handling_method "Penalty Method"
+      ]
+      
+      
+      if (state = 5) [
+        set fitness_function "Schaffer"
+        set constraint "Constraint 1"
+        set constraints false
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 6) [
+        set fitness_function "Schaffer"
+        set constraint "Constraint 3"
+        set constraints true
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 7) [
+        set fitness_function "Schaffer"
+        set constraint "Constraint 3"
+        set constraints true
+        set constraint_handling_method "Penalty Method"
+      ]
+      if (state = 8) [
+        set fitness_function "Schaffer"
+        set constraint "Constraint 4"
+        set constraints true
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 9) [
+        set fitness_function "Schaffer"
+        set constraint "Constraint 4"
+        set constraints true
+        set constraint_handling_method "Penalty Method"
+      ]
+      
+      if (state = 10) [
+        set fitness_function "Booth"
+        set constraint "Constraint 1"
+        set constraints false
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 11) [
+        set fitness_function "Booth"
+        set constraint "Constraint 3"
+        set constraints true
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 12) [
+        set fitness_function "Booth"
+        set constraint "Constraint 3"
+        set constraints true
+        set constraint_handling_method "Penalty Method"
+      ]
+      if (state = 13) [
+        set fitness_function "Booth"
+        set constraint "Constraint 4"
+        set constraints true
+        set constraint_handling_method "Rejection Method"
+      ]
+      if (state = 14) [
+        set fitness_function "Booth"
+        set constraint "Constraint 4"
+        set constraints true
+        set constraint_handling_method "Penalty Method"
+      ]
+      if (state = 15) [
+        stop
+      ]
+      
+      
+      set experiments 1
+      set state (state + 1)
+    ]
+    setup
   ]
   
   set iterations (iterations + 1)
@@ -674,7 +786,7 @@ BUTTON
 400
 203
 step
-iterate
+setup-experiments
 NIL
 1
 T
@@ -756,7 +868,7 @@ CHOOSER
 fitness_function
 fitness_function
 "Langermann" "Schwefel" "Shubert" "Schaffer" "Eggholder" "Easom" "Booth"
-0
+6
 
 SWITCH
 10
@@ -765,7 +877,7 @@ SWITCH
 143
 Constraints
 constraints
-1
+0
 1
 -1000
 
@@ -805,7 +917,7 @@ CHOOSER
 constraint_handling_method
 constraint_handling_method
 "Rejection Method" "Penalty Method"
-0
+1
 
 INPUTBOX
 320
@@ -871,7 +983,7 @@ CHOOSER
 Constraint
 constraint
 "Constraint 1" "Constraint 2" "Constraint 3" "Constraint 4" "Constraint 5" "Constraint 6" "Constraint 7"
-0
+3
 
 PLOT
 10
