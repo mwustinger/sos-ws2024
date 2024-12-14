@@ -46,28 +46,29 @@ globals
   max-y;           ; maximum y coordinate
 
   iterations       ; counter for iterations
-  experiments       ; counter for experiments
+  experiments      ; counter for experiments
   state            ; counter for state
+  config            ; counter for config
 ]
 
 ; The function setup initilizes the search landscape and the agents
 ; for the search. It is called by the button controll setup
 
 to setup-experiments
-  set fitness_function "Langermann"
-  set constraint "Constraint 1"
-  set constraints false
   set experiments 1;
-  set state 1;
+  set state 0;
+  set config 0;
   setup
 end
 
 to setup
   let temp experiments
   let temp2 state
+  let temp3 config
   clear-all
   set experiments temp
   set state temp2
+  set config temp3
   set iterations 1;
   initialize-topology
 
@@ -209,6 +210,93 @@ end
 ; it represents the iterations of the PSO algorithm
 
 to iterate
+  if (state = 0) [
+    set fitness_function "Langermann"
+    set constraint "Constraint 1"
+    set constraints false
+    set constraint_handling_method "Penalty Method"
+  ]
+  if (state = 1) [
+    set constraint "Constraint 3"
+    set constraints true
+    set constraint_handling_method "Rejection Method"
+  ]
+  if (state = 2) [
+    set constraint_handling_method "Penalty Method"
+  ]
+  if (state = 3) [
+    set constraint "Constraint 4"
+    set constraint_handling_method "Rejection Method"
+  ]
+  if (state = 4) [
+    set constraint_handling_method "Penalty Method"
+  ]
+
+
+  if (state = 5) [
+    set fitness_function "Schaffer"
+    set constraint "Constraint 1"
+    set constraints false
+  ]
+  if (state = 6) [
+    set constraint "Constraint 3"
+    set constraints true
+    set constraint_handling_method "Rejection Method"
+  ]
+  if (state = 7) [
+    set constraint_handling_method "Penalty Method"
+  ]
+  if (state = 8) [
+    set constraint "Constraint 4"
+    set constraint_handling_method "Rejection Method"
+  ]
+  if (state = 9) [
+    set constraint_handling_method "Penalty Method"
+  ]
+
+  if (state = 10) [
+    set fitness_function "Booth"
+    set constraint "Constraint 1"
+    set constraints false
+  ]
+  if (state = 11) [
+    set constraint "Constraint 3"
+    set constraints true
+    set constraint_handling_method "Rejection Method"
+  ]
+  if (state = 12) [
+    set constraint_handling_method "Penalty Method"
+  ]
+  if (state = 13) [
+    set constraint "Constraint 4"
+    set constraint_handling_method "Rejection Method"
+  ]
+  if (state = 14) [
+    set constraint_handling_method "Penalty Method"
+  ]
+  if (state = 15) [
+    set config (config + 1)
+    set state 0
+  ]
+  
+  if (config = 0) [
+    set particle-speed-limit 1
+  ]
+  if (config = 1) [
+    set particle-speed-limit 5
+  ]
+  if (config = 2) [
+    set particle-speed-limit 10
+  ]
+  if (config = 3) [
+    set particle-speed-limit 15
+  ]
+  if (config = 4) [
+    set particle-speed-limit 20
+  ]
+  if (config = 5) [
+    stop
+  ]
 
   update-particle-positions
 
@@ -225,98 +313,6 @@ to iterate
     export-run-results
     set experiments (experiments + 1)
     if (experiments > 30) [
-      if (state = 1) [
-        set fitness_function "Langermann"
-        set constraint "Constraint 3"
-        set constraints true
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 2) [
-        set fitness_function "Langermann"
-        set constraint "Constraint 3"
-        set constraints true
-        set constraint_handling_method "Penalty Method"
-      ]
-      if (state = 3) [
-        set fitness_function "Langermann"
-        set constraint "Constraint 4"
-        set constraints true
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 4) [
-        set fitness_function "Langermann"
-        set constraint "Constraint 4"
-        set constraints true
-        set constraint_handling_method "Penalty Method"
-      ]
-      
-      
-      if (state = 5) [
-        set fitness_function "Schaffer"
-        set constraint "Constraint 1"
-        set constraints false
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 6) [
-        set fitness_function "Schaffer"
-        set constraint "Constraint 3"
-        set constraints true
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 7) [
-        set fitness_function "Schaffer"
-        set constraint "Constraint 3"
-        set constraints true
-        set constraint_handling_method "Penalty Method"
-      ]
-      if (state = 8) [
-        set fitness_function "Schaffer"
-        set constraint "Constraint 4"
-        set constraints true
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 9) [
-        set fitness_function "Schaffer"
-        set constraint "Constraint 4"
-        set constraints true
-        set constraint_handling_method "Penalty Method"
-      ]
-      
-      if (state = 10) [
-        set fitness_function "Booth"
-        set constraint "Constraint 1"
-        set constraints false
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 11) [
-        set fitness_function "Booth"
-        set constraint "Constraint 3"
-        set constraints true
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 12) [
-        set fitness_function "Booth"
-        set constraint "Constraint 3"
-        set constraints true
-        set constraint_handling_method "Penalty Method"
-      ]
-      if (state = 13) [
-        set fitness_function "Booth"
-        set constraint "Constraint 4"
-        set constraints true
-        set constraint_handling_method "Rejection Method"
-      ]
-      if (state = 14) [
-        set fitness_function "Booth"
-        set constraint "Constraint 4"
-        set constraints true
-        set constraint_handling_method "Penalty Method"
-      ]
-      if (state = 15) [
-        stop
-      ]
-      
-      
       set experiments 1
       set state (state + 1)
     ]
