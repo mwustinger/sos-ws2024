@@ -2,24 +2,31 @@ import re
 import csv
 
 # Read the log data from the file "results.txt"
-with open('Booth.txt', 'r') as file:
+with open('martin_results.txt', 'r') as file:
     log_data = file.read()
 
 # Define the regex pattern to extract the relevant data
-pattern = re.compile(r'Particle Inertia: ([\d.]+), Personal Confidence: ([\d.]+), Swarm Confidence: ([\d.]+), Population Size: (\d+), Particle Speed Limit: (\d+), Constraint Handling Method: ([\w\s]+).+Final Fitness: ([\d.]+), Optimum Found After: (\d+), Iterations: (\d+)')
+pattern = re.compile(
+    r'Fitness Function: ([\w\s]+), Constraint: ([\w\s\d]+), Constraints Used: [\w]+, '
+    r'Constraint Handling Method: ([\w\s]+), Particle Inertia: ([\d.]+), '
+    r'Personal Confidence: ([\d.]+), Swarm Confidence: ([\d.]+), '
+    r'Population Size: (\d+), Particle Speed Limit: (\d+), '
+    r'Final Fitness: ([\d.e-]+), Optimum Found After: (\d+), Iterations: (\d+)'
+)
 
 # Find all matches using the regex pattern
 matches = pattern.findall(log_data)
 
 # Prepare the header for the CSV file
 csv_header = [
-    'Fitness Function', 'Particle Inertia', 'Personal Confidence', 'Swarm Confidence', 
-    'Population Size', 'Particle Speed Limit', 'Constraint Handling Method', 
-    'Final Fitness', 'Optimum Found After', 'Iterations'
+    'Fitness Function', 'Constraint', 'Constraint Handling Method', 
+    'Particle Inertia', 'Personal Confidence', 'Swarm Confidence', 
+    'Population Size', 'Particle Speed Limit', 'Final Fitness', 
+    'Optimum Found After', 'Iterations'
 ]
 
 # Open a CSV file to write the results
-with open('simulation_results.csv', 'w', newline='') as csvfile:
+with open('martin_results.csv', 'w', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
     
     # Write the header to the CSV file
@@ -28,17 +35,18 @@ with open('simulation_results.csv', 'w', newline='') as csvfile:
     # Write the filtered data for each match
     for match in matches:
         row = [
-            'Booth',
-            float(match[0]),  # Particle Inertia
-            float(match[1]),  # Personal Confidence
-            float(match[2]),  # Swarm Confidence
-            int(match[3]),    # Population Size
-            int(match[4]),    # Particle Speed Limit
-            match[5],         # Constraint Handling Method
-            float(match[6]),  # Final Fitness
-            int(match[7]),    # Optimum Found After
-            int(match[8])     # Iterations
+            match[0].strip(),          # Fitness Function
+            match[1].strip(),          # Constraint
+            match[2].strip(),          # Constraint Handling Method
+            float(match[3]),           # Particle Inertia
+            float(match[4]),           # Personal Confidence
+            float(match[5]),           # Swarm Confidence
+            int(match[6]),             # Population Size
+            int(match[7]),             # Particle Speed Limit
+            float(match[8]),           # Final Fitness
+            int(match[9]),             # Optimum Found After
+            int(match[10])             # Iterations
         ]
         csv_writer.writerow(row)
 
-print("Results saved to simulation_results.csv")
+print("Results saved to martin_results.csv")
