@@ -1,3 +1,0 @@
-observer: "Particle Inertia: 0.3, Personal Confidence: 0.8, Swarm Confidence: 1.6, Population Size: 13, Particle Speed Limit: 13, Constraint Handling Method: Rejection Method, Final Fitness: 0.9792624968257219, Optimum Found After: 22, Iterations: 50"
-observer: "Particle Inertia: 0.3, Personal Confidence: 0.8, Swarm Confidence: 1.6, Population Size: 13, Particle Speed Limit: 13, Constraint Handling Method: Rejection Method, Final Fitness: 1, Optimum Found After: 9, Iterations: 9"
-observer: "Particle Inertia: 0.3, Personal Confidence: 0.8, Swarm Confidence: 1.6, Population Size: 13, Particle Speed Limit: 13, Constraint Handling Method: Rejection Method, Final Fitness: 1, Optimum Found After: 9, Iterations: 9"
