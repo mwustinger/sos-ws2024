@@ -71,7 +71,7 @@ class PSOOptimizer:
         this use case, namely optimizing a NN.
 
         Note that in each iteration of the PSO algorithm, a set of solutions are generated, 
-        namely one solution by each particle. These are passed to this fittness function in the 
+        namely one solution by each particle. These are passed to this fitness function in the 
         parameter X. Since each solution is a list of numbers (the coordinates of a particle 
         position), X is a two-dimensional array.
 
@@ -99,7 +99,6 @@ class PSOOptimizer:
             fittness_scores.append(fittness)
 
         return np.array(fittness_scores)
-        # return np.array([1 * X.shape[0]])
 
     def random_batch(self, X_train, y_train):
         indices = np.random.choice(len(X_train), size=self.batchsize, replace=False)
@@ -120,9 +119,9 @@ def main():
     ####### PSO  Tuning ################
     # Tune the PSO parameters here trying to outperform the classic NN 
     # For more about these parameters, see the lecture resources
-    par_C1 = 0.5 # 0.1
-    par_C2 = 0.3 # 0.1
-    par_W = 0.9 # 0.1
+    par_C1 = 0.5 # 0.1 # self confidence
+    par_C2 = 0.3 # 0.1 # global confidence
+    par_W = 0.9  # 0.1 # inertia value
     par_SwarmSize = 1000 #100
     batchsize = 1000 # 200 # The number of data instances used by the fitness function
     n_iteration = 50
@@ -133,7 +132,6 @@ def main():
     print ("Number of variables to optimize: ", (n_inputs * n_hidden) + (n_hidden * n_classes) + n_hidden + n_classes)
     print ("PSO parameters C1: ", par_C1, "C2: ", par_C2, "W: ", par_W, "Swarmsize: ", par_SwarmSize,  "Iterations: ", n_iteration)
     print ("\n")
-
 
     # Initialize Neural Network and PSO optimizer
     nn = NeuralNetwork(n_inputs, n_hidden, n_classes, activation[0])
