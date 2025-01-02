@@ -1,4 +1,4 @@
-Fitness Function,Constraints,Constraints Used,Constraint Handling Method,Particle Inertia,Personal Confidence,Swarm Confidence,Population Size,Particle Speed Limit,Final Fitness,Optimum Found After,Iterations
+Fitness Function,Constraint,Constraint Used,Constraint Handling Method,Particle Inertia,Personal Confidence,Swarm Confidence,Population Size,Particle Speed Limit,Final Fitness,Optimum Found After,Iterations
 Langermann,Constraint 1,false,Penalty Method,0.3,1.0,1.0,13,13,1.0,9,9
 Langermann,Constraint 1,false,Penalty Method,0.3,1.0,1.0,13,13,1.0,25,25
 Langermann,Constraint 1,false,Penalty Method,0.3,1.0,1.0,13,13,1.0,9,9
