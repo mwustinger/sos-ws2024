@@ -1,6 +1,9 @@
 import numpy as np
 import pyswarms as ps
 from commonsetup import n_hidden, X_train, X_test, y_train, y_test, n_inputs, n_classes, activation, n_iteration
+import itertools
+import matplotlib.pyplot as plt
+import time
 
 class NeuralNetwork:
     def __init__(self, n_inputs, n_hidden, n_classes, activation):
@@ -113,6 +116,9 @@ class PSOOptimizer:
                                             options={'c1': self.c1, 'c2': self.c2, 'w': self.w})
         cost, weights = optimizer.optimize(self.fitness_function, iters=self.n_iterations, verbose=True,
                                        X_train=X_train, y_train=y_train)
+        
+        self.loss_history = optimizer.cost_history
+
         return weights
 
 def main():
@@ -122,28 +128,91 @@ def main():
     par_C1 = 0.5 # 0.1 # self confidence
     par_C2 = 0.3 # 0.1 # global confidence
     par_W = 0.9  # 0.1 # inertia value
-    par_SwarmSize = 1000 #100
-    batchsize = 1000 # 200 # The number of data instances used by the fitness function
-    n_iteration = 50
+    par_SwarmSize = 30 #100
+    batchsize = 100 # 200 # The number of data instances used by the fitness function
 
-    print ("############ you are using the following settings:")
-    print ("Number hidden layers: ", n_hidden)
-    print ("activation: ", activation[0])
-    print ("Number of variables to optimize: ", (n_inputs * n_hidden) + (n_hidden * n_classes) + n_hidden + n_classes)
-    print ("PSO parameters C1: ", par_C1, "C2: ", par_C2, "W: ", par_W, "Swarmsize: ", par_SwarmSize,  "Iterations: ", n_iteration)
-    print ("\n")
+    best_accuracy = 0
+    best_params = {}
+    params_acc = []
 
-    # Initialize Neural Network and PSO optimizer
-    nn = NeuralNetwork(n_inputs, n_hidden, n_classes, activation[0])
-    pso = PSOOptimizer(nn, par_C1, par_C2, par_W, par_SwarmSize, n_iteration, batchsize)
+    params = {
+        "C1": [1.5],
+        "C2": [1.0],
+        "W": [0.75],
+        "SwarmSize": [500]
+    }
 
-    # Perform optimization
-    weights = pso.optimize(X_train, y_train)
+    keys, values = zip(*params.items())
+    permutations_dict = [dict(zip(keys, v)) for v in itertools.product(*values)]
 
-    # Evaluate accuracy on the test set
-    y_pred = nn.predict(weights, X_test)
-    accuracy = (y_pred == y_test).mean()
-    print(f"Accuracy PSO-NN: {accuracy:.2f}")
+    for param in permutations_dict:
+        print ("############ you are using the following settings:")
+        print ("Number hidden layers: ", n_hidden)
+        print ("activation: ", activation[0])
+        print ("Number of variables to optimize: ", (n_inputs * n_hidden) + (n_hidden * n_classes) + n_hidden + n_classes)
+        print ("PSO parameters C1: ", param["C1"], "C2: ", param["C2"], "W: ", param["W"], "Swarmsize: ", param["SwarmSize"],  "Iterations: ", n_iteration)
+        print ("\n")
+
+        loss_history = []
+        avg_acc = []
+        times = []
+        for i in range(20):
+            print(f"Epoch {i}")
+            start = time.time()
+            # Initialize Neural Network and PSO optimizer
+            nn = NeuralNetwork(n_inputs, n_hidden, n_classes, activation[0])
+            pso = PSOOptimizer(nn, param["C1"], param["C2"], param["W"], param["SwarmSize"], n_iteration, batchsize)
+            
+            # Perform optimization
+            weights = pso.optimize(X_train, y_train)
+
+            end = time.time()
+            times.append(end - start)
+
+            loss_history.append(pso.loss_history)
+
+            # Evaluate accuracy on the test set
+            y_pred = nn.predict(weights, X_test)
+            accuracy = (y_pred == y_test).mean()
+            print(f"Accuracy PSO-NN: {accuracy:.2f}")
+            avg_acc.append(accuracy)
+
+        avg_acc = np.mean(avg_acc)
+        avg_train_time = np.mean(times)
+        carry_over = param
+        carry_over["acc"] = avg_acc
+        params_acc.append(carry_over)
+        if avg_acc > best_accuracy:
+            best_accuracy = avg_acc
+            best_params = param 
+
+    carry_over = best_params
+    carry_over["best_acc"] = best_accuracy
+    params_acc.append(carry_over)
+
+    plt.figure(figsize=(10, 6))
+
+    # Plot each run as a separate line
+    for i, loss in enumerate(loss_history):
+        plt.plot(loss, color='black', alpha=0.5, linewidth=2)
+
+    # Add labels, title, and legend
+    plt.xlabel('Iteration')
+    plt.ylabel('Loss')
+    plt.title('Loss Curves for Multiple Runs')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+    
+    plt.savefig('./exercise2/plots/Convergence_PSO_glass.png', dpi=300, bbox_inches='tight')
+
+    print(f"Best Accuracy PSO-NN: {best_accuracy:.2f}")
+    print(f"Best Parameters: {params}")
+    print(f"Average Train Time: {avg_train_time:.2f}")
+
+    """ with open("./exercise2/python_code/grid_search_glass.txt", 'w') as file:
+        for item in params_acc:
+            file.write(str(item) + '\n') """
 
 
 if __name__ == "__main__":
