@@ -1,0 +1,73 @@
+[W 2025-01-26 10:23:42.766 ServerApp] nbclassic | error adding extension (enabled: True): The module 'nbclassic' could not be found (No module named 'nbclassic'). Are you sure the extension is installed?
+    Traceback (most recent call last):
+      File "/home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyter_server/extension/manager.py", line 323, in add_extension
+        extpkg = ExtensionPackage(name=extension_name, enabled=enabled)
+      File "/home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyter_server/extension/manager.py", line 187, in __init__
+        self._load_metadata()
+      File "/home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyter_server/extension/manager.py", line 202, in _load_metadata
+        raise ExtensionModuleNotFound(msg) from None
+    jupyter_server.extension.utils.ExtensionModuleNotFound: The module 'nbclassic' could not be found (No module named 'nbclassic'). Are you sure the extension is installed?
+[I 2025-01-26 10:23:42.767 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2025-01-26 10:23:42.774 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2025-01-26 10:23:42.782 ServerApp] jupyterlab | extension was successfully linked.
+[I 2025-01-26 10:23:42.788 ServerApp] notebook | extension was successfully linked.
+[I 2025-01-26 10:23:42.797 ServerApp] Writing Jupyter server cookie secret to /home1/e12122402/.local/share/jupyter/runtime/jupyter_cookie_secret
+[I 2025-01-26 10:23:42.951 ServerApp] notebook_shim | extension was successfully linked.
+[I 2025-01-26 10:23:42.980 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2025-01-26 10:23:42.981 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2025-01-26 10:23:42.981 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2025-01-26 10:23:42.983 LabApp] JupyterLab extension loaded from /home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyterlab
+[I 2025-01-26 10:23:42.983 LabApp] JupyterLab application directory is /home/e12122402/miniconda3/envs/sos_venv/share/jupyter/lab
+[I 2025-01-26 10:23:42.984 LabApp] Extension Manager is 'pypi'.
+[I 2025-01-26 10:23:43.002 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2025-01-26 10:23:43.005 ServerApp] notebook | extension was successfully loaded.
+[I 2025-01-26 10:23:43.007 ServerApp] Serving notebooks from local directory: /home/e12122402/PySOMVis
+[I 2025-01-26 10:23:43.007 ServerApp] Jupyter Server 2.14.2 is running at:
+[I 2025-01-26 10:23:43.007 ServerApp] http://localhost:8890/tree?token=b5bd6995f002e486ae3cb13a1135f2f93177d5970eee95b1
+[I 2025-01-26 10:23:43.007 ServerApp]     http://127.0.0.1:8890/tree?token=b5bd6995f002e486ae3cb13a1135f2f93177d5970eee95b1
+[I 2025-01-26 10:23:43.007 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2025-01-26 10:23:43.016 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///home1/e12122402/.local/share/jupyter/runtime/jpserver-1725628-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8890/tree?token=b5bd6995f002e486ae3cb13a1135f2f93177d5970eee95b1
+        http://127.0.0.1:8890/tree?token=b5bd6995f002e486ae3cb13a1135f2f93177d5970eee95b1
+[I 2025-01-26 10:23:43.649 ServerApp] Skipped non-installed server(s): bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2025-01-26 10:23:49.544 ServerApp] Interrupted...
+[W 2025-01-26 10:24:18.789 ServerApp] nbclassic | error adding extension (enabled: True): The module 'nbclassic' could not be found (No module named 'nbclassic'). Are you sure the extension is installed?
+    Traceback (most recent call last):
+      File "/home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyter_server/extension/manager.py", line 323, in add_extension
+        extpkg = ExtensionPackage(name=extension_name, enabled=enabled)
+      File "/home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyter_server/extension/manager.py", line 187, in __init__
+        self._load_metadata()
+      File "/home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyter_server/extension/manager.py", line 202, in _load_metadata
+        raise ExtensionModuleNotFound(msg) from None
+    jupyter_server.extension.utils.ExtensionModuleNotFound: The module 'nbclassic' could not be found (No module named 'nbclassic'). Are you sure the extension is installed?
+[I 2025-01-26 10:24:18.790 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2025-01-26 10:24:18.793 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2025-01-26 10:24:18.796 ServerApp] jupyterlab | extension was successfully linked.
+[I 2025-01-26 10:24:18.800 ServerApp] notebook | extension was successfully linked.
+[I 2025-01-26 10:24:18.966 ServerApp] notebook_shim | extension was successfully linked.
+[I 2025-01-26 10:24:18.994 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2025-01-26 10:24:18.995 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2025-01-26 10:24:18.996 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2025-01-26 10:24:18.997 LabApp] JupyterLab extension loaded from /home/e12122402/miniconda3/envs/sos_venv/lib/python3.8/site-packages/jupyterlab
+[I 2025-01-26 10:24:18.997 LabApp] JupyterLab application directory is /home/e12122402/miniconda3/envs/sos_venv/share/jupyter/lab
+[I 2025-01-26 10:24:18.997 LabApp] Extension Manager is 'pypi'.
+[I 2025-01-26 10:24:19.014 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2025-01-26 10:24:19.016 ServerApp] notebook | extension was successfully loaded.
+[I 2025-01-26 10:24:19.018 ServerApp] Serving notebooks from local directory: /home/e12122402/PySOMVis
+[I 2025-01-26 10:24:19.018 ServerApp] Jupyter Server 2.14.2 is running at:
+[I 2025-01-26 10:24:19.018 ServerApp] http://localhost:8890/tree?token=3eab3fede861668c075c704369e11ddb7bf72aed43fa60a2
+[I 2025-01-26 10:24:19.019 ServerApp]     http://127.0.0.1:8890/tree?token=3eab3fede861668c075c704369e11ddb7bf72aed43fa60a2
+[I 2025-01-26 10:24:19.019 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2025-01-26 10:24:19.028 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///home1/e12122402/.local/share/jupyter/runtime/jpserver-1725696-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8890/tree?token=3eab3fede861668c075c704369e11ddb7bf72aed43fa60a2
+        http://127.0.0.1:8890/tree?token=3eab3fede861668c075c704369e11ddb7bf72aed43fa60a2
+[I 2025-01-26 10:24:19.512 ServerApp] Skipped non-installed server(s): bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2025-01-26 10:24:20.390 ServerApp] Interrupted...
