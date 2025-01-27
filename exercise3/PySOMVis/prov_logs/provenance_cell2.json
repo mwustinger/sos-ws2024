@@ -1,0 +1,40 @@
+{
+  "prefix": {
+    "tp": "https://github.com/mwustinger/sos-ws2024/tree/main/exercise3"
+  },
+  "entity": {
+    "tp:Dataset": {
+      "prov:label": "Chainlink"
+    },
+    "tp:Parameter": {
+      "prov:label": {
+        "$": 2,
+        "type": "xsd:int"
+      }
+    },
+    "tp:Output": {
+      "prov:label": "Input Distortion Plot"
+    }
+  },
+  "activity": {
+    "tp:Visualization": {
+      "prov:label": "Input Distortion"
+    }
+  },
+  "wasGeneratedBy": {
+    "_:id1": {
+      "prov:entity": "tp:Output",
+      "prov:activity": "tp:Visualization"
+    }
+  },
+  "used": {
+    "_:id2": {
+      "prov:activity": "tp:Visualization",
+      "prov:entity": "tp:Dataset"
+    },
+    "_:id3": {
+      "prov:activity": "tp:Visualization",
+      "prov:entity": "tp:Parameter"
+    }
+  }
+}

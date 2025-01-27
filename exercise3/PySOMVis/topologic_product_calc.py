@@ -1,6 +1,7 @@
 import numpy as np
 from functools import reduce
 
+
 class TopologicProductCalculator():
     def __init__(self, som):
         self.som = som
@@ -47,7 +48,7 @@ class TopologicProductCalculator():
 
     def _calc_P(self, q, k):
         product = np.prod(q[1:k+1])
-        return product ** (1 / k)
+        return product ** (1 / max(k, 1))
         
     def k_nearest_neighbor_input(self, xj, yj, k=None):
         nIsj = self.nIs[xj, yj]
@@ -73,7 +74,7 @@ class TopologicProductCalculator():
     
     def P3(self, xj, yj, k):
         product = np.prod(self.Q1s[xj, yj][1:k+1]) * np.prod(self.Q2s[xj, yj][1:k+1])
-        return product ** (1 / (2*k))
+        return product ** (1 / max(2*k, 1))
     
     # Disclaimer: This function is computationally very expensive
     def P(self):

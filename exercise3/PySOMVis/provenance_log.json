@@ -1,0 +1,40 @@
+{
+  "prefix": {
+    "ex": "http://example.org/"
+  },
+  "entity": {
+    "ex:Dataset": {
+      "prov:label": "Chainlink"
+    },
+    "ex:Parameter": {
+      "prov:label": {
+        "$": 2,
+        "type": "xsd:int"
+      }
+    },
+    "ex:Output": {
+      "prov:label": "Input Distortion Plot"
+    }
+  },
+  "activity": {
+    "ex:Visualization": {
+      "prov:label": "Input Distortion"
+    }
+  },
+  "wasGeneratedBy": {
+    "_:id1": {
+      "prov:entity": "ex:Output",
+      "prov:activity": "ex:Visualization"
+    }
+  },
+  "used": {
+    "_:id2": {
+      "prov:activity": "ex:Visualization",
+      "prov:entity": "ex:Dataset"
+    },
+    "_:id3": {
+      "prov:activity": "ex:Visualization",
+      "prov:entity": "ex:Parameter"
+    }
+  }
+}
