@@ -4,11 +4,11 @@
   },
   "entity": {
     "tp:Dataset": {
-      "prov:label": "Chainlink"
+      "prov:label": "10 Clusters"
     },
     "tp:Parameter": {
       "prov:label": {
-        "$": 50,
+        "$": 60,
         "type": "xsd:int"
       }
     },

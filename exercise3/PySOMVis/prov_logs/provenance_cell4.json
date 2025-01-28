@@ -8,24 +8,42 @@
     },
     "tp:Parameter": {
       "prov:label": {
-        "$": 2,
+        "$": 3,
         "type": "xsd:int"
       }
     },
-    "tp:Output": {
-      "prov:label": "Topological Product Plot"
-    }
+    "tp:Output": [
+      {
+        "prov:label": "Input Distortion Plot"
+      },
+      {
+        "prov:label": "Output Distortion Plot"
+      },
+      {
+        "prov:label": "Topological Product Plot"
+      }
+    ]
   },
   "activity": {
     "tp:Visualization": {
-      "prov:label": "Topological Product"
+      "prov:label": "Distortions and Topological Product"
     }
   },
   "wasGeneratedBy": {
-    "_:id1": {
-      "prov:entity": "tp:Output",
-      "prov:activity": "tp:Visualization"
-    }
+    "_:id1": [
+      {
+        "prov:entity": "tp:Output",
+        "prov:activity": "tp:Visualization"
+      },
+      {
+        "prov:entity": "tp:Output",
+        "prov:activity": "tp:Visualization"
+      },
+      {
+        "prov:entity": "tp:Output",
+        "prov:activity": "tp:Visualization"
+      }
+    ]
   },
   "used": {
     "_:id2": {

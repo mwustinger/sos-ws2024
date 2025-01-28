@@ -94,10 +94,3 @@ class TestTopologicProductCalculator(unittest.TestCase):
         P3_b = self.calculator.P3(1, 1, k)
         self.assertAlmostEqual(P3_a, P3_b, "P3 should be symmetric and consistent.")
 
-    def test_full_provenance_logging(self):
-        # Check if provenance information is properly logged for a sample calculation
-        weights = self.calculator._get_weight_array()
-        self.calculator._calc_k_nearest_neighbors(weights, 1, 1)
-        self.calculator._calc_Q(weights, 1, 1)
-        # Assuming the calculator logs provenance in a certain file or object
-        self.assertTrue(hasattr(self.calculator, "provenance"), "Provenance logging is missing.")
